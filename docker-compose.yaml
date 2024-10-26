@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  central:
+    container_name: container_uceda
+    environment:
+      TZ: America/El_Salvador
+      LANG: en_US.UTF-8
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./backend:/app
+    env_file:
+      - .env
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    image: python_image:uceda
+
+  
+volumes:
+  static:
+  backend:
